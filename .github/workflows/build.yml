@@ -16,7 +16,7 @@ jobs:
         with:
           python-version: '3.11'
           
-      - name: Setup Java (هام جداً للأندرويد)
+      - name: Setup Java
         uses: actions/setup-java@v4
         with:
           distribution: 'zulu'
@@ -25,13 +25,13 @@ jobs:
       - name: Install Flutter SDK
         uses: subosito/flutter-action@v2
         with:
-          flutter-version: 'latest'
+          channel: 'stable' # هذا السطر سيقوم بتحميل آخر نسخة مستقرة تلقائياً
           
       - name: Install Flet
         run: pip install flet
 
       - name: Build APK (بناء التطبيق)
-        run: flet build apk
+        run: flet build apk --no-version-check
         
       - name: Upload APK
         uses: actions/upload-artifact@v4
