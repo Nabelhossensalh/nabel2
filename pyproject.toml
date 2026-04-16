@@ -1,0 +1,19 @@
+[project]
+name = "smart-grocery-pos"
+version = "1.5.0"
+description = "نظام بقالة ذكي"
+dependencies = [
+    "flet>=0.21.0",
+]
+
+[tool.flet]
+app.module = "main" # هنا نخبر GitHub أن يبدأ من main.py
+product = "Smart Grocery POS"
+org = "com.smartgrocery.pos"
+
+[tool.flet.android]
+permissions = [
+    "camera",
+    "write_external_storage",
+    "read_external_storage"
+]
