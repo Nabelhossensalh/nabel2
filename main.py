@@ -93,10 +93,11 @@ class Database:
     """إدارة اتصال قاعدة البيانات والعمليات الأساسية"""
     
     def __init__(self, storage_path=""):
+        # استخدام اسم قاعدة البيانات المفضل لديك لضمان التوافق
         if storage_path:
-            db_path = os.path.join(storage_path, "store_management.db")
+            db_path = os.path.join(storage_path, "grocery_store.db")
         else:
-            db_path = "store_management.db"
+            db_path = "grocery_store.db"
             
         self.conn = sqlite3.connect(db_path, check_same_thread=False)
         self.conn.row_factory = sqlite3.Row
@@ -967,13 +968,15 @@ class StoreManagementApp:
     def __init__(self, page: ft.Page):
         self.page = page
         
-        # تحديد مسار قاعدة البيانات للأندرويد
+        # تحديد مسار قاعدة البيانات (خاصة للأندرويد)
         storage_path = ""
         try:
             import sys
+            import os
+            # في أندرويد، المسار الحالي قد لا يكون قابلاً للكتابة، فنستخدم مسار البيانات
             if sys.platform == 'android':
-                # في أندرويد نستخدم المسار المخصص للبيانات
-                storage_path = page.client_storage.get("db_path") or ""
+                # Flet يقوم بتحديد هذا المسار تلقائياً في البيئات المحمولة
+                storage_path = os.getenv("FLET_DATA_DIR", "")
         except Exception:
             pass
             
