@@ -4,6 +4,7 @@ from datetime import datetime
 from dataclasses import dataclass
 from typing import Optional, List, Dict, Tuple
 import json
+import os
 
 # =============================================================================
 # نماذج البيانات (Models)
@@ -91,8 +92,13 @@ class Payment:
 class Database:
     """إدارة اتصال قاعدة البيانات والعمليات الأساسية"""
     
-    def __init__(self):
-        self.conn = sqlite3.connect("store_management.db", check_same_thread=False)
+    def __init__(self, storage_path=""):
+        if storage_path:
+            db_path = os.path.join(storage_path, "store_management.db")
+        else:
+            db_path = "store_management.db"
+            
+        self.conn = sqlite3.connect(db_path, check_same_thread=False)
         self.conn.row_factory = sqlite3.Row
         self.create_tables()
     
@@ -960,7 +966,18 @@ class StoreManagementApp:
     
     def __init__(self, page: ft.Page):
         self.page = page
-        self.db = Database()
+        
+        # تحديد مسار قاعدة البيانات للأندرويد
+        storage_path = ""
+        try:
+            import sys
+            if sys.platform == 'android':
+                # في أندرويد نستخدم المسار المخصص للبيانات
+                storage_path = page.client_storage.get("db_path") or ""
+        except Exception:
+            pass
+            
+        self.db = Database(storage_path)
         
         # إعدادات الصفحة
         self.page.title = "نظام إدارة المتجر المتكامل"
