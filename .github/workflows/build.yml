@@ -5,9 +5,14 @@ on:
       - main
   workflow_dispatch:
 
+env:
+  FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
+
 jobs:
   build:
     runs-on: ubuntu-latest
+    permissions:
+      contents: write
     steps:
       - uses: actions/checkout@v4
       
@@ -27,8 +32,10 @@ jobs:
         with:
           channel: 'stable'
           
-      - name: Install Flet
-        run: pip install flet
+      - name: Install dependencies
+        run: |
+          pip install flet
+          if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
 
       - name: Build APK (بناء التطبيق)
         run: flet build apk
