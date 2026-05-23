@@ -1074,7 +1074,7 @@ class StoreManagementApp:
                                     ],
                                     alignment=ft.MainAxisAlignment.CENTER,
                                 ),
-                                padding=ft.padding.symmetric(horizontal=20, vertical=10),
+                                padding=ft.Padding(20, 10, 20, 10),
                             ),
                             style=ft.ButtonStyle(
                                 color=ft.Colors.WHITE,
@@ -1299,7 +1299,7 @@ class StoreManagementApp:
             self.products_list.controls.append(
                 ft.Container(
                     content=ft.Text("لا توجد منتجات", size=16, color=ft.Colors.GREY_500),
-                    alignment=ft.alignment.center,
+                    alignment=ft.Alignment(0, 0),
                     padding=50,
                 )
             )
@@ -1617,7 +1617,12 @@ class StoreManagementApp:
                                 spacing=15,
                                 expand=True,
                             ),
-                            border=ft.border.all(1, ft.Colors.GREY_200),
+                            border=ft.Border(
+                                ft.BorderSide(1, ft.Colors.GREY_200),
+                                ft.BorderSide(1, ft.Colors.GREY_200),
+                                ft.BorderSide(1, ft.Colors.GREY_200),
+                                ft.BorderSide(1, ft.Colors.GREY_200)
+                            ),
                         ),
                     ],
                     expand=True,
@@ -1763,7 +1768,7 @@ class StoreManagementApp:
             self.cart_list.controls.append(
                 ft.Container(
                     content=ft.Text("السلة فارغة", size=16, color=ft.Colors.GREY_500),
-                    alignment=ft.alignment.center,
+                    alignment=ft.Alignment(0, 0),
                     padding=50,
                 )
             )
@@ -1912,7 +1917,7 @@ class StoreManagementApp:
             self.customers_list.controls.append(
                 ft.Container(
                     content=ft.Text("لا يوجد عملاء", size=16, color=ft.Colors.GREY_500),
-                    alignment=ft.alignment.center,
+                    alignment=ft.Alignment(0, 0),
                     padding=50,
                 )
             )
@@ -2047,7 +2052,7 @@ class StoreManagementApp:
                 debts_list.controls.append(
                     ft.Container(
                         content=ft.Text("لا توجد ديون مسجلة", size=16, color=ft.Colors.GREY_500),
-                        alignment=ft.alignment.center,
+                        alignment=ft.Alignment(0, 0),
                         padding=50,
                     )
                 )
@@ -2542,7 +2547,7 @@ class StoreManagementApp:
             history_list.controls.append(
                 ft.Container(
                     content=ft.Text("لا توجد حركات مسجلة", size=16, color=ft.Colors.GREY_500),
-                    alignment=ft.alignment.center,
+                    alignment=ft.Alignment(0, 0),
                     padding=50,
                 )
             )
@@ -2627,7 +2632,7 @@ class StoreManagementApp:
                         ],
                         spacing=20,
                     ),
-                    margin=ft.margin.only(top=15, bottom=15),
+                    margin=ft.Margin(0, 15, 0, 15),
                 )
             )
             
@@ -2647,14 +2652,14 @@ class StoreManagementApp:
                         padding=10,
                         bgcolor=ft.Colors.WHITE,
                         border_radius=8,
-                        margin=ft.margin.only(bottom=5),
+                        margin=ft.Margin(0, 0, 0, 5),
                     )
                 )
             
             product_details.controls.append(
                 ft.Container(
                     content=ft.Text("سجل إضافة المخزون", size=16, weight=ft.FontWeight.BOLD),
-                    margin=ft.margin.only(top=15)
+                    margin=ft.Margin(0, 15, 0, 0)
                 )
             )
             for record in statistics['stock_history'][:20]:
@@ -2671,7 +2676,7 @@ class StoreManagementApp:
                         padding=10,
                         bgcolor=ft.Colors.WHITE,
                         border_radius=8,
-                        margin=ft.margin.only(bottom=5),
+                        margin=ft.Margin(0, 0, 0, 5),
                     )
                 )
             
@@ -2750,7 +2755,7 @@ class StoreManagementApp:
                     padding=15,
                     bgcolor=ft.Colors.BLUE_50,
                     border_radius=10,
-                    margin=ft.margin.only(bottom=20),
+                    margin=ft.Margin(0, 0, 0, 20),
                 )
             )
             
@@ -2778,7 +2783,7 @@ class StoreManagementApp:
                         padding=10,
                         bgcolor=ft.Colors.WHITE,
                         border_radius=8,
-                        margin=ft.margin.only(bottom=5),
+                        margin=ft.Margin(0, 0, 0, 5),
                     )
                 )
             
