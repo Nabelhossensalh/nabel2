@@ -1043,7 +1043,12 @@ class StoreManagementApp:
                     border_radius=15,
                     tooltip=name,
                     on_click=lambda _, c=color: self.change_theme(c),
-                    border=ft.border.all(2, ft.Colors.WHITE) if self.theme_color == color else None,
+                    border=ft.Border(
+                        top=ft.BorderSide(2, ft.Colors.WHITE),
+                        bottom=ft.BorderSide(2, ft.Colors.WHITE),
+                        left=ft.BorderSide(2, ft.Colors.WHITE),
+                        right=ft.BorderSide(2, ft.Colors.WHITE)
+                    ) if self.theme_color == color else None,
                     shadow=ft.BoxShadow(blur_radius=5, color=ft.Colors.with_opacity(0.2, ft.Colors.BLACK))
                 )
             )
@@ -1155,7 +1160,7 @@ class StoreManagementApp:
                         bgcolor=color,
                         border_radius=25,
                         padding=10,
-                        alignment=ft.alignment.center,
+                        alignment=ft.Alignment(0, 0),
                     ),
                     ft.Container(height=10),
                     ft.Text(title, size=16, weight=ft.FontWeight.BOLD),
