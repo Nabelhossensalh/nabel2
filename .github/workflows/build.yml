@@ -25,7 +25,7 @@ jobs:
       - name: Install Flutter SDK
         uses: subosito/flutter-action@v2
         with:
-          channel: 'stable' # هذا السطر سيقوم بتحميل آخر نسخة مستقرة تلقائياً
+          channel: 'stable'
           
       - name: Install Flet
         run: pip install flet
